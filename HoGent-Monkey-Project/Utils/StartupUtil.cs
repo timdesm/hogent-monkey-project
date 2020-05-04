@@ -14,18 +14,21 @@ namespace HoGent_Monkey_Project
                 int map_x = inputInteger("Map X-coord");
                 int map_y = inputInteger("Map Y-coord");
                 int trees = inputInteger("Amount of trees");
+                int monkeys = inputInteger("Amount of monkeys");
 
                 Program.printHeader();
                 Console.WriteLine("Input overview");
                 Console.WriteLine("X: " + map_x);
                 Console.WriteLine("Y: " + map_y);
                 Console.WriteLine("Trees: " + trees);
+                Console.WriteLine("Monkeys: " + monkeys);
                 Console.WriteLine(" ");
                 Console.Write("Are these values correct (Y/N)? ");
                 String continueInput = Console.ReadLine();
                 switch (continueInput.ToUpper())
                 {
                     case "Y":
+                        Program.wood = new Wood(1, map_x, map_y, trees, monkeys);
                         userCheck = true;
                         break;
                     case "N":

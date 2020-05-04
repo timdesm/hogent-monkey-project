@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace HoGent_Monkey_Project
 {
@@ -9,6 +10,11 @@ namespace HoGent_Monkey_Project
         public static String mysql_user = "u32002p26917_hogent";
         public static String mysql_pass;
         public static String mysql_data = "u32002p26917_hogent";
+
+        public static String[] monkeyNames = { "Jan", "Fred", "Tim", "Will.i.am", "Leen", "Rik", "Karel", "Lisa", "Sanne", "Sven"};
+        public static Color[] monkeyColors = { Color.Red, Color.Blue, Color.Yellow, Color.Orange, Color.Purple, Color.Aqua, Color.LimeGreen, Color.White, Color.DarkCyan, Color.OrangeRed };
+
+        public static Wood wood;
 
         static void Main(string[] args)
         {
@@ -48,7 +54,14 @@ namespace HoGent_Monkey_Project
             StartupUtil.inputVariables();
 
             printHeader();
-            while (true) { }
+            while (true) {
+                Console.ReadLine();
+                foreach(Tree tree in wood.Trees)
+                {
+                    Console.WriteLine($"[ID: {tree.ID}] {tree.X},{tree.Y}");
+                    wood.saveToImage(@"C:\Users\timde\Desktop\Hogent Monkeys");
+                }
+            }
         }
 
         public static void printHeader()
