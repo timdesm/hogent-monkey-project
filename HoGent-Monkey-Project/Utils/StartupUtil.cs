@@ -28,7 +28,7 @@ namespace HoGent_Monkey_Project
                 switch (continueInput.ToUpper())
                 {
                     case "Y":
-                        Program.wood = new Wood(1, map_x, map_y, trees, monkeys);
+                        Program.wood = new Wood(DatabaseManager.getNewWoodID(), map_x, map_y, trees, monkeys);
                         userCheck = true;
                         break;
                     case "N":

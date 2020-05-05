@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace HoGent_Monkey_Project
@@ -24,6 +25,22 @@ namespace HoGent_Monkey_Project
             if (!(obj is Tree))
                 return false;
             return (this.X == ((Tree)obj).X) && (this.Y == ((Tree)obj).Y);
+        }
+
+        public double getTreeDistance(Tree tree)
+        {
+            return Math.Sqrt(Math.Pow(this.X - tree.X, 2) + Math.Pow(this.Y - tree.Y, 2));
+        }
+
+        public double getBorderDistance(Wood wood)
+        {
+            return (new List<Double>()
+            {
+                wood.Y - this.Y,
+                wood.X - this.X,
+                this.Y - 0,
+                this.X - 0
+            }).Min();
         }
     }
 }

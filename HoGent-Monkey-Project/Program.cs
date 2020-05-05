@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace HoGent_Monkey_Project
 {
     class Program
     {
+        public static String ExportPath = "";
+
         public static DatabaseUtil db;
         public static String mysql_host = "timdesmet.be";
         public static String mysql_user = "u32002p26917_hogent";
@@ -50,17 +55,25 @@ namespace HoGent_Monkey_Project
                 }
             }
 
-            // Request for user input variables
-            StartupUtil.inputVariables();
-
-            printHeader();
-            while (true) {
-                Console.ReadLine();
-                foreach(Tree tree in wood.Trees)
+            while(true)
+            {
+                printHeader();
+                Console.Write("Export folder?: ");
+                ExportPath = Console.ReadLine();
+                if(Directory.Exists(ExportPath))
+                    break;
+                else
                 {
-                    Console.WriteLine($"[ID: {tree.ID}] {tree.X},{tree.Y}");
-                    wood.saveToImage(@"C:\Users\timde\Desktop\Hogent Monkeys");
+                    Console.WriteLine("That folder does not exist!");
+                    Console.WriteLine(" ");
+                    Console.Write("Press ENTER to continue...");
+                    Console.ReadLine();
                 }
+            }
+            
+            while (true) {
+                // Request for user input variables
+                StartupUtil.inputVariables();
             }
         }
 
